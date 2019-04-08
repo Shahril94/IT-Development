@@ -1,0 +1,965 @@
+Main menu - Movie ABC
+
+<html>
+<head>
+<style>
+body, html {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+.toppane {
+  width: 100%;
+  height: 10%;
+  border-collapse: collapse;
+  background-color: #4da6ff;
+}
+
+.middlepane {
+    width: 100%;
+    height: 80%;
+    background-color: royalblue;
+    border-collapse: collapse;
+}
+
+.bottompane {
+    width:100%;
+    height:10%;
+    background-color: rosybrown;
+    border-collapse: collapse;
+  
+}
+
+/* Button Sign Up / Log In */
+.right {
+    position: absolute;
+    right: 0px;
+    width: 300px;
+    padding: 10px;
+        
+}
+.navlinks {
+    background-color: #000000; /* Black */
+    border: none;
+    color: white;
+    /*padding: 15px 32px;*/
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+/* About Us / Contact */
+.left {
+    position: absolute;
+    left: 0px;
+    width: 300px;
+    padding: 10px;
+}
+
+.title{
+    padding: 1px;
+}
+
+/*Hover Method Link*/
+.contain {
+    position: relative;
+    width: 30%;
+}
+
+.image {
+  opacity: 1;
+  display: block;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.image:hover{
+    
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+/*---  Text display when hover  ----- */
+.contain:hover .image {
+  opacity: 0.3;
+}
+
+.contain:hover .middle {
+  opacity: 1;
+}
+/*--- opacity for image & and the textbox ----*/
+.text {
+  background-color: #FFA500;
+  color: white;
+  font-size: 16px;
+  padding: 16px 32px;
+}
+
+/* The Close Button (x) */
+.close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button{
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+button2{background-color: #5EFF33;} /* light green */
+/*.button3{background-color: #5EFF33;} /* light green */
+
+button:hover {
+    opacity: 0.8;
+}
+
+input[type=submit]{
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    cursor: pointer;
+    width: 50%;  
+}
+
+input[type=button]{
+    background-color: #FFA500;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer; 
+}
+
+a:link, a:visited {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+img.hidden {
+    visibility: hidden;
+}
+
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+/* Center the image and position the close button */
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    position:relative;
+}
+
+img.avatar {
+    width: 15%;
+    border-radius: 0%;
+}
+
+/*content model*/
+.containerbox {
+    padding: 16px;
+}
+
+
+/* background-color content*/
+.containerbg {
+    padding: 16px;
+    background-color: lightblue;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+/* - tab - function 
+--------------------------------- */
+
+.tablink {
+    background-color: #5EFF33;
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    height: 11.32%;
+    font-size: 17px;
+    width: 25%;
+}
+
+.tablink:hover {
+    background-color: #777;
+}
+
+/* Style the tab content */
+.tabcontent {
+    color: white;
+    display: none;
+    /*padding: 5px;
+    text-align: center;*/
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+.modal2nd {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.modal-content-bg {
+    background-color: lightblue;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* Add Zoom Animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
+}
+    
+@keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+    .cancelbtn {
+       width: 100%;
+    }
+}
+
+/*.leftpane {
+    width: 25%;
+    height: 100%;
+    float: left;
+    background-color: rosybrown;
+    border-collapse: collapse;
+    <div class="leftpane">
+    <h1>Money</h1></div>
+}*/
+
+/*.rightpane {
+  width: 25%;
+  height: 100%;
+  position: relative;
+  float: right;
+  background-color: yellow;
+  border-collapse: collapse;
+  <div class="rightpane">
+  <h1>Test Page</h1></div>
+  </div>
+}*/
+
+</style>
+</head>
+<body>
+    <div class="container">
+        
+    <div class="toppane">
+        <div class="left">
+            <img src="ABC Movie Logo.jpg" width="100" height="50" class="hover" onclick="home()">
+        </div>
+        <div class="right"><button class="button2" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Log In</button>
+                           <button class="button2" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Sign Up</button>        
+        </div>
+        <div class="title">
+            <center><h2>Welcome to ABC Movie</h2></center>
+        </div>
+        
+    </div>    
+    <div class="middlepane">
+        <br><br>
+        <div id="NowShowing" class="tabcontent">    
+            <table border="0">
+                        <td><img src="Arrows.png" width=25 height=100 class="hidden"></td>
+                        <td class="contain"><img src="Now Showing/Spider_Verse_KeyartV3_500.jpg" alt="Avatar" class="image" width=273 height=350 >
+                            <div class="middle">
+                                <div><input type="button"  onclick="document.getElementById('id05').style.display='block'" style="width:auto;" value="Spider-Man"></div><br>
+                                <div><input type="button" onclick="newLink()" value="Buy Ticket"></div>
+                            </div>
+                        </td>
+                        <td class="contain"><img src="Now Showing/Ralph.jpg" alt="Avatar" class="image" width=273 height=350 >   
+                            <div class="middle">
+                                <div><input type="button"  onclick="document.getElementById('id06').style.display='block'" style="width:auto;" value="Ralph Breaks The Internet"></div><br>
+                                <div><input type="button" onclick="newLink2()" value="Buy Ticket"></div>
+                            </div>
+                        </td>                            
+                        <td class="contain"><img src="Now Showing/The_House_With_A_Clock_In_Its_Wall_KeyartV2_500.jpg" alt="Avatar" class="image" width=273 height=1000 >    
+                            <div class="middle">
+                                <div><input type="button" onclick="document.getElementById('id07').style.display='block'" style="width:auto;" value="The House With A Clock In Its Wall"></div><br>
+                                <div><input type="button" onclick="newLink3()" value="Buy Ticket"></div>
+                            </div>
+                        </td>
+                        <td class="contain"><img src="Now Showing/Mortal_Engines_KeyartV1_500.jpg" alt="Avatar" class="image" width=273 height=350 >    
+                            <div class="middle">
+                                <div><input type="button" onclick="document.getElementById('id08').style.display='block'" style="width:auto;" value="Mortal Engines"></div><br>
+                                <div><input type="button" onclick="newLink4()" value="Buy Ticket"></div>
+                            </div>
+                        </td>
+                        <td class="contain"><img src="Now Showing/Nanoha_Detonation_Keyart_500.jpg" alt="Avatar" class="image" width=273 height=350 >    
+                            <div class="middle">
+                                <div><input type="button" onclick="document.getElementById('id09').style.display='block'" style="width:auto;" value="Nanoha"></div><br>
+                                <div><input type="button" onclick="newLink5()" value="Buy Ticket"></div>
+                            </div>
+                        </td>                    
+                        <td><img src="Arrows2.png" width=25 height=100 class="hidden"></td>     
+                    </table><br> 
+        </div>
+        <div id="NextShowing" class="tabcontent">    
+            <table border="0">
+                        <td><img src="Arrows.png" width=25 height=100 class="hidden"></td>
+                        <td class="contain"><img src="Next Change/Aquaman_KeyartV4_500.jpg" alt="Avatar" class="image" width=273 height=350 >
+                            <div class="middle">
+                                <div><input type="button" value="Aquaman"></div><br>
+                            </div>
+                        </td>
+                        <td class="contain"><img src="Next Change/A_Stolen_Life_Keyart_500.jpg" alt="Avatar" class="image" width=273 height=350 >   
+                            <div class="middle">
+                                <div><input type="button" value="A Stolen Life Keyart"></div><br>
+                            </div>
+                        </td>
+                        <td class="contain"><img src="Next Change/Bumblebee_Keyart_v2_500.jpg" alt="Avatar" class="image" width=273 height=350 >    
+                            <div class="middle">
+                                <div><input type="button"  value="Bumblebee"></div><br>
+                            </div>
+                        </td>
+                        <td class="contain"><img src="Next Change/Unstoppable_Keyart_500.jpg" alt="Avatar" class="image" width=273 height=350 >    
+                            <div class="middle">
+                                <div><input type="button"  value="Unstoppable"></div><br>
+                            </div>
+                        </td>
+                        <td class="contain"><img src="Next Change/Thuppaki_Munai_Keyart_500.jpg" alt="Avatar" class="image" width=273 height=350 >    
+                            <div class="middle">
+                                <div><input type="button" value="Thuppaki Munai"></div><br>
+                            </div>
+                        </td>                        
+                        <td><img src="Arrows2.png" width=25 height=100 class="hidden"></td>     
+                    </table><br> 
+        </div> 
+        <div id="ComingSoon" class="tabcontent">    
+            <table border="0">
+                        <td><img src="Arrows.png" width=25 height=100 class="hidden"></td>
+                        <td class="contain"><img src="Coming Soon/Mary_Poppins_Returns_Keyart_v4_500.jpg" alt="Avatar" class="image" width=273 height=350 >
+                            <div class="middle">
+                                <div><input type="button" value="Mary Poppins"></div><br>
+                            </div>
+                        </td>
+                        <td class="contain"><img src="Coming Soon/Captain_Marvel_KeyartV3_500.jpg" alt="Avatar" class="image" width=273 height=350 >   
+                            <div class="middle">
+                                <div><input type="button" value="Captain Marvel"></div><br>
+                            </div>
+                        </td>
+                        <td class="contain"><img src="Coming Soon/Avengers_Endgame_Keyart_v2_500.jpg" alt="Avatar" class="image" width=273 height=350 >    
+                            <div class="middle">
+                                <div><input type="button" value="Avengers Endgame"></div><br>
+                            </div>
+                        </td>
+                        <td class="contain"><img src="Coming Soon/Shazam_Keyart_500.jpg" alt="Avatar" class="image" width=273 height=350 >    
+                            <div class="middle">
+                                <div><input type="button" value="Shazam"></div><br>
+                            </div>
+                        </td>
+                        <td class="contain"><img src="Coming Soon/Detective_Pikachu_Keyart_500.jpg" alt="Avatar" class="image" width=273 height=350 >    
+                            <div class="middle">
+                                <div><input type="button" value="Pokemon"></div><br>
+                            </div>
+                        </td>                        
+                        <td><img src="Arrows2.png" width=25 height=100 class="hidden"></td>     
+                    </table><br> 
+        </div>
+        <div id="InternationalScreen" class="tabcontent">    
+            <table border="0">
+                        <td><img src="Arrows.png" width=25 height=100 class="hidden"></td>
+                        <td class="contain"><img src="International Screen/BreakingNews_500.jpg" alt="Avatar" class="image" width=273 height=350 >
+                            <div class="middle">
+                                <div><input type="button" value="Breaking News"></div><br>
+                            </div>
+                        </td>
+                        <td class="contain"><img src="International Screen/ClimbingHigher_500.jpg" alt="Avatar" class="image" width=273 height=350 >   
+                            <div class="middle">
+                                <div><input type="button" value="Climbing Higher"></div><br>
+                            </div>
+                        </td>
+                        <td class="contain"><img src="International Screen/FriendsByChance_500.jpg" alt="Avatar" class="image" width=273 height=350 >   
+                            <div class="middle">
+                                <div><input type="button" value="Friend By Chance"></div><br>
+                            </div>
+                        </td>
+                        <td class="contain"><img src="International Screen/KincsemBetOnRevenge_500.jpg" alt="Avatar" class="image" width=273 height=350 >   
+                            <div class="middle">
+                                <div><input type="button" value="Kimcsem Bet On Revenge"></div><br>
+                            </div>
+                        </td> 
+                        <td class="contain"><img src="International Screen/LovingVincent_500.jpg" alt="Avatar" class="image" width=273 height=350 >   
+                            <div class="middle">
+                                <div><input type="button" value="L.Vincent"></div><br>
+                            </div>
+                        </td>                         
+                        <td><img src="Arrows2.png" width=25 height=100 class="hidden"></td>     
+                    </table><br> 
+        </div>         
+                        <button class="tablink" onclick="openMenu('NowShowing',this,'red')" id="defaultOpen" >Now Showing</button>
+                        <button class="tablink" onclick="openMenu('NextShowing',this,'blue')">Next Showing</button>
+                        <button class="tablink" onclick="openMenu('ComingSoon',this,'green')">Coming Soon</button>
+                        <button class="tablink" onclick="openMenu('InternationalScreen',this,'yellow')">International Screen</button>
+        
+    </div>
+        
+    <div class="bottompane">
+    <div class="left"><button class="button2" onclick="document.getElementById('id03').style.display='block'" style="width:auto;">About Us</button>
+                      <button class="button2" onclick="document.getElementById('id04').style.display='block'" style="width:auto;">Contact Us</button>         
+    </div>
+    </div>
+    
+    </div>
+
+<script>
+function openMenu(Menu,elmnt,color) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].style.backgroundColor = "";
+    }
+    document.getElementById(Menu).style.display = "block";
+    elmnt.style.backgroundColor = color;
+
+}
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>   
+<script>
+function home()
+{
+    window.location.assign("Main Page Movie ABC.php");
+}
+</script>
+<script>
+function newLink()
+{
+    window.location.assign("Link1.php");
+}   
+</script>
+<script>
+function newLink2()
+{
+    window.location.assign("Link2.php");
+}   
+</script>
+<script>
+function newLink3()
+{
+    window.location.assign("Link3.php");
+}   
+</script>
+<script>
+function newLink4()
+{
+    window.location.assign("Link4.php");
+}   
+</script>
+<script>
+function newLink5()
+{
+    window.location.assign("Link5.php");
+}   
+</script>  
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+};
+</script>
+<script>
+// Get the modal
+var modal = document.getElementById('id02');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+};
+</script>
+<script>
+// Get the modal
+var modal = document.getElementById('id03');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+};
+</script>
+<script>
+// Get the modal
+var modal = document.getElementById('id04');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+};
+</script>
+<script>
+// Get the modal
+var modal = document.getElementById('id05');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+};
+</script>
+<script>
+// Get the modal
+var modal = document.getElementById('id06');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+};
+</script>
+<script>
+// Get the modal
+var modal = document.getElementById('id07');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+};
+</script>
+<script>
+// Get the modal
+var modal = document.getElementById('id08');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+};
+</script>
+<script>
+// Get the modal
+var modal = document.getElementById('id09');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+};
+</script>
+<script>
+// Get the modal
+var modal = document.getElementById('id10');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+};
+</script>
+<script>
+// Get the modal
+var modal = document.getElementById('id11');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+};
+</script>
+<script>
+// Get the modal
+var modal = document.getElementById('id12');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+};
+</script>
+<script>
+// Get the modal
+var modal = document.getElementById('id13');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+};
+</script>
+<script>
+// Get the modal
+var modal = document.getElementById('id14');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+};
+</script>
+<script>
+// Get the modal
+var modal = document.getElementById('id15');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+};
+</script>
+<script>
+// Get the modal
+var modal = document.getElementById('id16');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+};
+</script>
+<script>
+// Get the modal
+var modal = document.getElementById('id17');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+};
+</script>
+<script>
+// Get the modal
+var modal = document.getElementById('id18');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+};
+</script>
+<script>
+// Get the modal
+var modal = document.getElementById('id19');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+};
+</script>
+<script>
+// Get the modal
+var modal = document.getElementById('id20');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+};
+</script>
+<script>
+// Get the modal
+var modal = document.getElementById('id21');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+};
+</script>
+
+<div id="id01" class="modal2nd">
+  
+    <form class="modal-content animate" action="LogSuccess.php" method="post">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <img src="PFR.png" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="containerbox">
+      <label for="username"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="username" required>
+
+      <label for="password"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="password" required>
+        
+      <input type='submit' name="submit" id='LogIn' value='Log In' />
+    </div>
+
+    <div class="containerbox" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot password?</span>
+    </div>
+  </form>
+</div>
+<div id="id02" class="modal">
+  
+    <form action="Insert.php" method="post" class="modal-content animate">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <img src="PFR.png" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="containerbox">
+      <label for="email"><b>Email</b></label>
+      <input type="text" placeholder="Enter Email" name="email" required>
+      
+      <label for="uname"><b>Name</b></label>
+      <input type="text" placeholder="Enter Name" name="name" required>
+        
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username(User ID)" name="uname" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+      <font size="2"><font color="red">Password</font> must be at least 6 character</font><br><br>
+      
+      <label for="mNumber"><b>Mobile Phone</b></label>
+      <input type="text" placeholder="Enter Mobile Phone" name="phone" required>
+      
+      <label for="cNumber"><b>Contact Number</b></label>
+      <input type="text" placeholder="Enter Contact Number" name="contact" required>
+      <font size="2">For those who doesn't have mobile phone</font><br><br>
+
+      I would like to receive updates on movies
+      <input type="radio" name="news" value="Yes">Yes &nbsp;<input type="radio" name="news" value="No">No<br><br> 
+      
+      <input type="submit" value="Sign Up" name="Submit">
+    </div>
+
+    <div class="containerbox" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot password?</span>
+    </div>
+    
+  </form>
+</div>
+<div id="id03" class="modal">
+    <div class="modal-content-bg animate">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <img src="ABC Movie Logo.jpg" alt="Avatar" class="avatar">
+        </div>
+        <div class="containerbg">
+            <h2>About Us</h2><br>
+            This is the ABC Movie where you can see the latest movie, create account to buy tickets from the latest movie, manage profile account,redeem special 
+            rewards and receive update newsletter
+        </div>
+    
+    
+    </div>
+</div>
+<div id="id04" class="modal">
+    <div class="modal-content-bg animate">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('id04').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <img src="ABC Movie Logo.jpg" alt="Avatar" class="avatar">
+        </div>
+        <div class="containerbg">
+            <h2>Contact information</h2><br>
+            email:ABCMovie@gmail.com<br>
+            phone number: +892110333
+        </div>
+    
+    
+    </div>
+</div>
+<div id="id05" class="modal">
+    <div class="modal-content-bg animate">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('id05').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <h2>Synopsis</h2>
+        </div>
+        <div class="containerbg">
+            <h2>Spider-Man:Into the Spider-Verse</h2><br>
+            Enter a universe where more than one wears the mask.<br>  
+        </div>
+    </div>
+</div>
+<div id="id06" class="modal">
+    <div class="modal-content-bg animate">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('id06').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <h2>Synopsis</h2>
+        </div>
+        <div class="containerbg">
+            <h2>Ralph Breaks The Internet's</h2><br>
+            Ralph Breaks the Internet: Wreck-It Ralph 2" leaves Litwak's video arcade behind, venturing into the uncharted, expansive and thrilling world of the internet-which 
+            may or may not survive Ralph's wrecking. Video game bad guy Ralph (voice of John C. Reilly) and fellow misfit Vanellope von Schweetz (voice of Sarah Silverman) must 
+            risk it all by traveling to the world wide web in search of a replacement part to save Vanellope's video game, Sugar Rush. In way over their heads, Ralph and 
+            Vanellope rely on the citizens of the internet - the netizens - to help navigate their way, including a website entrepreneur named Yesss(voice of Taraji P. Henson), 
+            who is the head algorithm and the heart and soul of trend-making site" BuzzzTube..<br>  
+        </div>
+    </div>
+</div>
+<div id="id07" class="modal">
+    <div class="modal-content-bg animate">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('id07').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <h2>Synopsis</h2>
+        </div>
+        <div class="containerbg">
+            <h2>The House With A Clock In Its Walls</h2><br>
+            The magical adventure tells the spine-tingling tale of 10-year-old Lewis (Owen Vaccaro) who goes to live with his uncle in a creaky old house with a mysterious 
+            tick-tocking heart. But his new town's sleepy facade jolts to life with a secret world of warlocks and witches when Lewis accidentally awakens the dead..<br>  
+        </div>
+    </div>
+</div>
+<div id="id08" class="modal">
+    <div class="modal-content-bg animate">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('id08').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <h2>Synopsis</h2>
+        </div>
+        <div class="containerbg">
+            <h2>Mortal Engines</h2><br>
+            Millennia after the "Sixty Minute War" a cataclysmic event that destroyed much of planet Earth, cities survive the now-desolate planet by roaming the globe on 
+            huge wheels, battling each other and devouring smaller traction towns for resources.Tom Natsworthy, a low-class citizen of the moving city of London, fights 
+            for survival after encountering the fugitive Hester Shaw.The two then forge an unlikely alliance which just may change the future..<br>  
+        </div>
+    </div>
+</div>
+<div id="id09" class="modal">
+    <div class="modal-content-bg animate">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('id09').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <h2>Synopsis</h2>
+        </div>
+        <div class="containerbg">
+            <h2>Magical Girl Lyrical Nanoha Detonation</h2><br>
+               The story begins in the planet Eltoria which is quietly dying because of devastation. The Florian family,consisting of a researcher 
+               couple and their two daughters, Amitie and Kyrie, are still staying in the planet with the dream of revitalizing it. However, father Grants Florian 
+               collapses from his illness, then their dream crumbles. Meanwhile, Kyrie decides to go in search of a way to save her father and to revive the planet in a 
+               "different world far away." Her older sister Amitie tries to stop her, but Kyrie rejects her control and goes on a journey to the different world along with 
+               her childhood and best friend Iris. Their destination is Japan, a small island country in the planet called "earth." Kirie and Iris, 
+               looking for the key to revive their planet, visit three girls who live in Japan. The three girls are: Nanoha Takamachi, Fate Testarossa, and Hayate Yagami. 
+               Their encounter will be linked to the battle which would decide the fate of the two worlds and two planets..<br>  
+        </div>
+    </div>
+</div>
+</body>
+</html>
